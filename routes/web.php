@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\adminWarnetController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -36,8 +37,19 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
         ->group(function () {
             Route::get('/', 'index')->name('index');
             Route::post('showdata', 'dataTable')->name('dataTable');
-            Route::match(['get','post'],'tambah', 'tambahAkun')->name('add');
-            Route::match(['get','post'],'{id}/ubah', 'ubahAkun')->name('edit');
+            Route::match(['get', 'post'], 'tambah', 'tambahAkun')->name('add');
+            Route::match(['get', 'post'], '{id}/ubah', 'ubahAkun')->name('edit');
             Route::delete('{id}/hapus', 'hapusAkun')->name('delete');
+        });
+
+    Route::controller(adminWarnetController::class)
+        ->prefix('adminWarnet')
+        ->as('adminWarnet.')
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('showdata', 'dataTable')->name('dataTable');
+            Route::match(['get', 'post'], 'tambah', 'tambahAdminWarnet')->name('add');
+            Route::match(['get', 'post'], '{id}/ubah', 'ubahAdminWarnet')->name('edit');
+            Route::delete('{id}/hapus', 'hapusAdminWarnet')->name('delete');
         });
 });

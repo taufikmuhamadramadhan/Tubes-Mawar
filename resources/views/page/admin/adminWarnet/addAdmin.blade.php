@@ -5,14 +5,14 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Tambah Akun</h1>
+                <h1>Tambah Admin Warnet</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item">
                         <a href="{{ route('home') }}">Beranda</a>
                     </li>
-                    <li class="breadcrumb-item active">Tambah Akun</li>
+                    <li class="breadcrumb-item active">Tambah AdminWarnet</li>
                 </ol>
             </div>
         </div>
@@ -36,7 +36,7 @@
             <div class="col-md-10">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Informasi Data Akun</h3>
+                        <h3 class="card-title">Informasi Data Admin Warnet</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -64,17 +64,9 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="inputFoto">Foto Profil</label>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img class="elevation-3" id="prevImg" src="{{ asset('vendor/adminlte3/img/user2-160x160.jpg') }}" width="150px" />
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="file" id="inputFoto" name="user_image" accept="image/*" class="form-control @error('user_image') is-invalid @enderror" placeholder="Upload foto profil">
-                                </div>
-                            </div>
-
-                            @error('user_image')
+                            <label for="inputName">Nama Warnet</label>
+                            <input type="text" id="inputName" name="nameWarnet" class="form-control @error('nameWarnet') is-invalid @enderror" placeholder="Masukkan Nama Warnet" value="{{ old('nameWarnet') }}" required="required" autocomplete="nameWarnet">
+                            @error('nameWarnet')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -97,7 +89,7 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
-                <a href="{{ route('akun.index') }}" class="btn btn-secondary">Cancel</a>
+                <a href="{{ route('adminWarnet.index') }}" class="btn btn-secondary">Cancel</a>
                 <input type="submit" value="Tambah Akun" class="btn btn-success float-right">
                 <!-- /.card -->
             </div>
