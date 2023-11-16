@@ -47,6 +47,7 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
         ->as('adminWarnet.')
         ->group(function () {
             Route::get('/', 'index')->name('index');
+            Route::get('/getData', 'getData')->name('getData');
             Route::post('showdata', 'dataTable')->name('dataTable');
             Route::match(['get', 'post'], 'tambah', 'tambahAdminWarnet')->name('add');
             Route::match(['get', 'post'], '{id}/ubah', 'ubahAdminWarnet')->name('edit');

@@ -75,46 +75,24 @@
             "serverSide": true,
             "processing": true,
             "ajax": {
-                "url": "{{ route('adminWarnet.dataTable') }}",
-                "dataType": "json",
-                "type": "POST",
+                "url": "{{ route('adminWarnet.getData') }}",
                 "data": {
                     _token: "{{csrf_token()}}"
                 }
             },
             "columns": [{
-                "data": "name"
+                "data": "name",
+                "name": "name"
             }, {
-                "data": "email"
+                "data": "email",
+                "name": "email"
             }, {
-                "data": "nameWarnet"
+                "data": "nameWarnet",
+                "name": "name Warnet"
             }, {
-                "data": "options"
+                "data": "action",
+                "name": "action"
             }],
-            "language": {
-                "decimal": "",
-                "emptyTable": "Tak ada data yang tersedia pada tabel ini",
-                "info": "Menampilkan _START_ hingga _END_ dari _TOTAL_ entri",
-                "infoEmpty": "Menampilkan 0 hingga 0 dari 0 entri",
-                "infoFiltered": "(difilter dari _MAX_ total entri)",
-                "infoPostFix": "",
-                "thousands": ",",
-                "lengthMenu": "Tampilkan _MENU_ entri",
-                "loadingRecords": "Loading...",
-                "processing": "Sedang Mengambil Data...",
-                "search": "Pencarian:",
-                "zeroRecords": "Tidak ada data yang cocok ditemukan",
-                "paginate": {
-                    "first": "Pertama",
-                    "last": "Terakhir",
-                    "next": "Selanjutnya",
-                    "previous": "Sebelumnya"
-                },
-                "aria": {
-                    "sortAscending": ": aktifkan untuk mengurutkan kolom ascending",
-                    "sortDescending": ": aktifkan untuk mengurutkan kolom descending"
-                }
-            }
 
         });
 
