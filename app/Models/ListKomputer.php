@@ -12,7 +12,7 @@ class ListKomputer extends Model
     protected $table = 'list_komputer';
 
     protected $fillable = [
-        'warnet_id',
+        'id_warnet',
         'nama_komputer',
         'processor',
         'ram',

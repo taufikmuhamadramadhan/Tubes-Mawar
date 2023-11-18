@@ -51,9 +51,4 @@ class AdminWarnet extends Authenticatable
     {
         return $this->belongsTo(warnet::class, 'id_warnet', 'id');
     }
-
-    public function listKomputers()
-    {
-        return $this->hasMany(ListKomputer::class);
-    }
 }

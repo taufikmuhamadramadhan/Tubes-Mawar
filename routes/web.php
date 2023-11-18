@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WarnetController;
+use App\Http\Controllers\ListKomputerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,16 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
             Route::delete('{id}/hapus', 'hapusAdminWarnet')->name('delete');
         });
 });
+
+    Route::group(['prefix' => 'dashboard/admin/list_komputer'], function () {
+        Route::get('/', [ListKomputerController::class, 'index'])->name('list_komputer.index');
+        Route::get('/create', [ListKomputerController::class, 'create'])->name('list_komputer.create');
+        Route::post('/', [ListKomputerController::class, 'store'])->name('list_komputer.store');
+        Route::get('/{id}', [ListKomputerController::class, 'show'])->name('list_komputer.show');
+        Route::get('/{id}/edit', [ListKomputerController::class, 'edit'])->name('list_komputer.edit');
+        Route::put('/{id}', [ListKomputerController::class, 'update'])->name('list_komputer.update');
+        Route::delete('/{id}', [ListKomputerController::class, 'destroy'])->name('list_komputer.destroy');
+    });
 
 //warnet
 // Display the warnet list

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\ListKomputer;
 use App\Models\warnet;
 use Illuminate\Http\Request;
 
