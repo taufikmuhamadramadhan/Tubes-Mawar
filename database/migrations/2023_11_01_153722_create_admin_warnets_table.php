@@ -30,7 +30,7 @@ class CreateAdminWarnetsTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
 
-            $table->foreign('id_warnet')->references('id_warnet')->on('warnet_table');
+            $table->foreign('id_warnet')->references('id_warnet')->on('warnet');
         });
     }
 
