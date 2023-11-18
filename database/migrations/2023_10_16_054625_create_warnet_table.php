@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('warnet_table', function (Blueprint $table) {
+        Schema::create('warnet', function (Blueprint $table) {
             $table->id('id_warnet');
             $table->string('nama_warnet');
             $table->string('alamat');
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('warnet_table');
+        Schema::dropIfExists('warnet');
     }
 };

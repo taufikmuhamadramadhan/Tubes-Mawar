@@ -5,6 +5,7 @@ use App\Http\Controllers\adminWarnetController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WarnetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,3 +54,25 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
             Route::delete('{id}/hapus', 'hapusAdminWarnet')->name('delete');
         });
 });
+
+//warnet
+// Display the warnet list
+Route::get('/warnet', [WarnetController::class, 'index'])->name('warnet.index');
+
+// Show the form for creating a new warnet
+Route::get('/warnet/create', [WarnetController::class, 'create'])->name('warnet.create');
+
+// Store a newly created warnet in the database
+Route::post('/warnet', [WarnetController::class, 'store'])->name('warnet.store');
+
+// Display the specified warnet
+Route::get('/warnet/{warnet}', [WarnetController::class, 'show'])->name('warnet.show');
+
+// Show the form for editing the specified warnet
+Route::get('/warnet/{warnet}/edit', [WarnetController::class, 'edit'])->name('warnet.edit');
+
+// Update the specified warnet in the database
+Route::put('/warnet/{warnet}', [WarnetController::class, 'update'])->name('warnet.update');
+
+// Remove the specified warnet from the database
+Route::delete('/warnet/{warnet}', [WarnetController::class, 'destroy'])->name('warnet.destroy');
