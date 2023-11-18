@@ -18,10 +18,12 @@ class AdminWarnet extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id_adminWarnet',
         'name',
         'email',
         'nameWarnet',
         'password',
+        'id_warnet',
     ];
 
     /**
@@ -42,4 +44,11 @@ class AdminWarnet extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public $timestamps = true;
+
+    public function warnet()
+    {
+        return $this->belongsTo(warnet::class, 'id_warnet', 'id');
+    }
 }
