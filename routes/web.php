@@ -57,16 +57,16 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
         });
 });
 
-    Route::group(['prefix' => 'dashboard/admin/list_komputer'], function () {
-        Route::get('/', [ListKomputerController::class, 'index'])->name('list_komputer.index');
-        Route::get('/create', [ListKomputerController::class, 'create'])->name('list_komputer.create');
-        Route::post('/', [ListKomputerController::class, 'store'])->name('list_komputer.store');
-        Route::get('/{id}', [ListKomputerController::class, 'show'])->name('list_komputer.show');
-        Route::get('/{id}/edit', [ListKomputerController::class, 'edit'])->name('list_komputer.edit');
-        Route::put('/{id}', [ListKomputerController::class, 'update'])->name('list_komputer.update');
-        Route::delete('/{id}', [ListKomputerController::class, 'destroy'])->name('list_komputer.destroy');
-        Route::post('/', [ListKomputerController::class, 'dataTable'])->name('list_komputer.dataTable');
-    });
+        Route::group(['prefix' => 'dashboard/admin/list_komputer'], function () {
+            Route::get('/', [ListKomputerController::class, 'index'])->name('list_komputer.index');
+            Route::post('showdata', [ListKomputerController::class,'dataTable'])->name('list_komputer.dataTable');
+            Route::get('/create', [ListKomputerController::class, 'create'])->name('list_komputer.create');
+            Route::post('/', [ListKomputerController::class, 'store'])->name('list_komputer.store');
+            Route::get('/{id}', [ListKomputerController::class, 'show'])->name('list_komputer.show');
+            Route::get('/{id}/edit', [ListKomputerController::class, 'edit'])->name('list_komputer.edit');
+            Route::put('/{id}', [ListKomputerController::class, 'update'])->name('list_komputer.update');
+            Route::delete('/{id}', [ListKomputerController::class, 'destroy'])->name('list_komputer.destroy');
+        });
 
 
 //warnet

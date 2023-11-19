@@ -79,7 +79,7 @@ class ListKomputerController extends Controller
         $totalFilteredRecord = $totalDataRecord = $draw_val = "";
         $columns_list = array(
             0 => 'warnet.nama_warnet',
-            1 => 'id',
+            1 => 'id_komputer',
             2 => 'processor',
             3 => 'ram',
             4 => 'gpu',
@@ -104,7 +104,7 @@ class ListKomputerController extends Controller
             $search_text = $request->input('search.value');
 
             $komputer_data = ListKomputer::with('warnet')
-                ->where('id', 'LIKE', "%{$search_text}%")
+                ->where('id_komputer', 'LIKE', "%{$search_text}%")
                 ->orWhere('processor', 'LIKE', "%{$search_text}%")
                 ->orWhere('ram', 'LIKE', "%{$search_text}%")
                 ->orWhere('gpu', 'LIKE', "%{$search_text}%")
@@ -113,7 +113,7 @@ class ListKomputerController extends Controller
                 ->orderBy($order_val, $dir_val)
                 ->get();
 
-            $totalFilteredRecord = ListKomputer::where('id', 'LIKE', "%{$search_text}%")
+            $totalFilteredRecord = ListKomputer::where('id_komputer', 'LIKE', "%{$search_text}%")
                 ->orWhere('processor', 'LIKE', "%{$search_text}%")
                 ->orWhere('ram', 'LIKE', "%{$search_text}%")
                 ->orWhere('gpu', 'LIKE', "%{$search_text}%")
@@ -123,11 +123,11 @@ class ListKomputerController extends Controller
         $data_val = array();
         if (!empty($komputer_data)) {
             foreach ($komputer_data as $komputer_val) {
-                $url = route('list_komputer.edit', ['id' => $komputer_val->id]);
-                $urlHapus = route('list_komputer.destroy', $komputer_val->id);
+                $url = route('list_komputer.edit', ['id_komputer' => $komputer_val->id_komputer]);
+                $urlHapus = route('list_komputer.destroy', $komputer_val->id_komputer);
 
                 $komputerNestedData['warnet.nama_warnet'] = $komputer_val->warnet->nama_warnet;
-                $komputerNestedData['id'] = $komputer_val->id;
+                $komputerNestedData['id_komputer'] = $komputer_val->id_komputer;
                 $komputerNestedData['processor'] = $komputer_val->processor;
                 $komputerNestedData['ram'] = $komputer_val->ram;
                 $komputerNestedData['gpu'] = $komputer_val->gpu;
