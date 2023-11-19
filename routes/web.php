@@ -65,7 +65,9 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
         Route::get('/{id}/edit', [ListKomputerController::class, 'edit'])->name('list_komputer.edit');
         Route::put('/{id}', [ListKomputerController::class, 'update'])->name('list_komputer.update');
         Route::delete('/{id}', [ListKomputerController::class, 'destroy'])->name('list_komputer.destroy');
+        Route::post('/', [ListKomputerController::class, 'dataTable'])->name('list_komputer.dataTable');
     });
+
 
 //warnet
 // Display the warnet list

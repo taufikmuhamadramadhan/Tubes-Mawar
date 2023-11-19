@@ -51,22 +51,25 @@
 @section('script_footer')
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
         $(document).ready(function() {
             $('#dataKomputer').DataTable({
                 "serverSide": true,
                 "processing": true,
                 "ajax": {
-                    "url": "{{ route('list_komputer.index') }}",
-                    "type": "GET",
+                    "url": "{{ route('list_komputer.dataTable') }}",
+                    "dataType": "json",
+                    "type": "POST",
+                    "data": {
+                        _token: "{{ csrf_token() }}"
+                    }
                 },
                 "columns": [
-                    { "data": "warnet.nama_warnet", "name": "warnet.nama_warnet" },
-                    { "data": "id_komputer", "name": "id_komputer" },
-                    { "data": "processor", "name": "processor" },
-                    { "data": "ram", "name": "ram" },
-                    { "data": "gpu", "name": "gpu" },
+                    { "data": "warnet.nama_warnet"},
+                    { "data": "id_komputer"},
+                    { "data": "processor"},
+                    { "data": "ram"},
+                    { "data": "gpu"},
                     { 
                         "data": "action",
                         "name": "action",
