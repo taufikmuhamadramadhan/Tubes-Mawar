@@ -19,7 +19,7 @@ class CreateAdminWarnetsTable extends Migration
         // Create the table
         Schema::create('admin_warnets', function (Blueprint $table) {
             $table->id('id_adminWarnet');
-            $table->unsignedBigInteger('id_warnet')->index();
+            $table->foreignId('id_warnet');
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -27,8 +27,6 @@ class CreateAdminWarnetsTable extends Migration
             $table->string('nameWarnet')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->charset = 'utf8mb4';
-            $table->collation = 'utf8mb4_unicode_ci';
 
             $table->foreign('id_warnet')->references('id_warnet')->on('warnet');
         });

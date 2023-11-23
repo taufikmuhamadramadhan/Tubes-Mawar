@@ -75,24 +75,29 @@
             "serverSide": true,
             "processing": true,
             "ajax": {
-                "url": "{{ route('adminWarnet.getData') }}",
+                "url": "{{ route('adminWarnet.dataTable') }}",
+                "type": "POST",
                 "data": {
                     _token: "{{csrf_token()}}"
                 }
             },
             "columns": [{
-                "data": "name",
-                "name": "name"
-            }, {
-                "data": "email",
-                "name": "email"
-            }, {
-                "data": "nameWarnet",
-                "name": "name Warnet"
-            }, {
-                "data": "action",
-                "name": "action"
-            }],
+                    "data": "name",
+                    "name": "name"
+                },
+                {
+                    "data": "email",
+                    "name": "email"
+                },
+                {
+                    "data": "nama_warnet",
+                    "name": "nama_warnet"
+                },
+                {
+                    "data": "options",
+                    "name": "options"
+                }
+            ],
 
         });
 
