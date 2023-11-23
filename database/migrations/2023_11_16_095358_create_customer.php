@@ -21,7 +21,8 @@ return new class extends Migration
             $table->integer('billing');
             $table->integer('no_telp');
             $table->rememberToken();
-            $table->timestamps('create_date');
+            $table->date('create_date');
+            $table->timestamps();
         });
     }
 
