@@ -19,11 +19,14 @@ $links = [
 "section_text" => "Data Akun Admin Warnet",
 "section_icon" => "far fa-circle",
 "section_href" => route('adminWarnet.index')
-],
-[
+],[
 "section_text" => "Warnet",
 "section_icon" => "far fa-circle",
 "section_href" => route('warnet.index')
+],[
+"section_text" => "Customer",
+"section_icon" => "far fa-circle",
+"section_href" => route('customer.index')
 ]
 ]
 ]

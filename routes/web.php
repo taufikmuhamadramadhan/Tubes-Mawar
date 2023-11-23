@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WarnetController;
 use App\Http\Controllers\ListKomputerController;
+use App\Http\Controllers\customerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,19 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
             Route::match(['get', 'post'], '{id_adminWarnet}/ubah', 'ubahAdminWarnet')->name('edit');
             Route::delete('{id_adminWarnet}/hapus', 'hapusAdminWarnet')->name('delete');
         });
+
+    Route::controller(CustomerController::class)
+        ->prefix('customer')
+        ->as('customer.')
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/getData', 'dataTable')->name('data');
+            Route::post('showdata', 'dataTable')->name('dataTable');
+            Route::match(['get', 'post'], 'tambah', 'tambahCustomer')->name('add');
+            Route::match(['get', 'post'], '{id_customer}/ubah', 'ubahCustomer')->name('edit');
+            Route::delete('{id_customer}/hapus', 'hapusCustomer')->name('delete');
+        });
+    
 });
 
 Route::group(['prefix' => 'dashboard/admin/list_komputer'], function () {
@@ -67,7 +81,6 @@ Route::group(['prefix' => 'dashboard/admin/list_komputer'], function () {
     Route::put('/{id}', [ListKomputerController::class, 'update'])->name('list_komputer.update');
     Route::delete('/{id}', [ListKomputerController::class, 'destroy'])->name('list_komputer.destroy');
 });
-
 
 //warnet
 // Display the warnet list
