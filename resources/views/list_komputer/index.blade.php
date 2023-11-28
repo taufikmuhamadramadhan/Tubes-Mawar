@@ -49,65 +49,51 @@
 @endsection
 
 @section('script_footer')
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#dataKomputer').DataTable({
-                "serverSide": true,
-                "processing": true,
-                "ajax": {
-                    "url": "{{ route('list_komputer.dataTable') }}",
-                    "dataType": "json",
-                    "type": "POST",
-                    "data": {
-                        _token: "{{ csrf_token() }}"
-                    }
-                },
-                "columns": [
-                    { "data": "warnet.nama_warnet"},
-                    { "data": "id_komputer"},
-                    { "data": "processor"},
-                    { "data": "ram"},
-                    { "data": "gpu"},
-                    { 
-                        "data": "action",
-                        "name": "action",
-                        "orderable": false,
-                        "searchable": false
-                    }
-                ],
-                "language": {
-                "decimal": "",
-                "emptyTable": "Tak ada data yang tersedia pada tabel ini",
-                "info": "Menampilkan _START_ hingga _END_ dari _TOTAL_ entri",
-                "infoEmpty": "Menampilkan 0 hingga 0 dari 0 entri",
-                "infoFiltered": "(difilter dari _MAX_ total entri)",
-                "infoPostFix": "",
-                "thousands": ",",
-                "lengthMenu": "Tampilkan _MENU_ entri",
-                "loadingRecords": "Loading...",
-                "processing": "Sedang Mengambil Data...",
-                "search": "Pencarian:",
-                "zeroRecords": "Tidak ada data yang cocok ditemukan",
-                "paginate": {
-                    "first": "Pertama",
-                    "last": "Terakhir",
-                    "next": "Selanjutnya",
-                    "previous": "Sebelumnya"
-                },
-                "aria": {
-                    "sortAscending": ": aktifkan untuk mengurutkan kolom ascending",
-                    "sortDescending": ": aktifkan untuk mengurutkan kolom descending"
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#dataKomputer').DataTable({
+            "serverSide": true,
+            "processing": true,
+            "ajax": {
+                "url": "{{ route('list_komputer.dataTable') }}",
+                "type": "POST",
+                "data": {
+                    _token: "{{csrf_token()}}"
                 }
-            }
-            });
+            },
+            "columns": [
+                { 
+                "data": "nama_warnet",
+                "name": "nama_warnet"
+                },
+                { 
+                "data": "id_komputer",
+                "name": "id_komputer"
+                },
+                {
+                "data": "processor",
+                "name": "processor"
+                },
+                {
+                "data": "ram",
+                "name": "ram"
+                },
+                { 
+                "data": "gpu",
+                "name": "gpu"
+                },
+            ],
 
-            // hapus data
-            $('#dataKomputer').on('click', '.hapusData', function() {
-                var id = $(this).data("id");
-                var url = "{{ route('list_komputer.destroy', ':id') }}".replace(':id', id);
-                Swal.fire({
+        });
+
+        // hapus data
+        $('#dataKomputer').on('click', '.hapusData', function() {
+            var id_komputer = $(this).data("id_komputer");
+            var url = $(this).data("url");
+            Swal
+                .fire({
                     title: 'Apa kamu yakin?',
                     text: "Kamu tidak akan dapat mengembalikan ini!",
                     icon: 'warning',
@@ -116,22 +102,26 @@
                     cancelButtonColor: '#d33',
                     confirmButtonText: 'Ya, hapus!',
                     cancelButtonText: 'Batal'
-                }).then((result) => {
+                })
+                .then((result) => {
                     if (result.isConfirmed) {
+                        // console.log();
                         $.ajax({
                             url: url,
                             type: 'DELETE',
                             data: {
-                                "_token": "{{ csrf_token() }}"
+                                "id_komputer": id_komputer,
+                                "_token": "{{csrf_token()}}"
                             },
                             success: function(response) {
+                                //console.log();
                                 Swal.fire('Terhapus!', response.msg, 'success');
                                 $('#dataKomputer').DataTable().ajax.reload();
                             }
                         });
                     }
                 })
-            });
         });
-    </script>
+    });
+</script>
 @endsection

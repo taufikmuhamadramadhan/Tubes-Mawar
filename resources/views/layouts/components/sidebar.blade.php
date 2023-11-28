@@ -24,6 +24,11 @@ $links = [
 "section_text" => "Warnet",
 "section_icon" => "far fa-circle",
 "section_href" => route('warnet.index')
+],
+[
+"section_text" => "Data Komputer",
+"section_icon" => "far fa-circle",
+"section_href" => route('list_komputer.index')
 ]
 ]
 ]
