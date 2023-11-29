@@ -27,6 +27,11 @@ $links = [
 "section_text" => "Customer",
 "section_icon" => "far fa-circle",
 "section_href" => route('customer.index')
+],
+[
+"section_text" => "Data Komputer",
+"section_icon" => "far fa-circle",
+"section_href" => route('list_komputer.index')
 ]
 ]
 ]
