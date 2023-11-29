@@ -106,4 +106,6 @@ Route::put('/warnet/{warnet}', [WarnetController::class, 'update'])->name('warne
 Route::delete('/warnet/{warnet}', [WarnetController::class, 'destroy'])->name('warnet.destroy');
 
 Route::post('/warnet/data', [WarnetController::class, 'dataTable'])->name('warnet.dataTable');
-Route::get('warnet/export-pdf', [WarnetController::class, 'exportPdf'])->name('warnet.exportPdf');
+Route::match(['get', 'post'], 'warnet/export-pdf', [WarnetController::class, 'exportPdf'])->name('warnet.exportPdf');
+
+

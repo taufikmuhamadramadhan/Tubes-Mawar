@@ -10,7 +10,11 @@
     <div class="container">
         <h2>Warnet List</h2>
         <a href="{{ route('warnet.create') }}" class="btn btn-primary">Add Warnet</a>
-        <a href="{{ route('warnet.exportPdf') }}" class="btn btn-warning">Export to PDF</a>
+        <form action="{{ route('warnet.exportPdf') }}" method="POST">
+    @csrf
+    <button type="submit" class="btn btn-warning">Export to PDF</button>
+</form>
+
         <table class="table mt-3" id="warnet-table">
             <thead>
                 <tr>
@@ -34,7 +38,7 @@
                         "url": "{{ route('warnet.dataTable') }}",
                         "type": "POST",
                         "data": {
-                            _token: "{{csrf_token()}}"
+                        _token: "{{ csrf_token() }}"
                         }
                     },
                     "columns": [{
