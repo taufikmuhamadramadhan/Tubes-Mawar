@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\adminWarnetController;
+use App\Exports\AdminWarnetExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -55,6 +57,7 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
             Route::match(['get', 'post'], 'tambah', 'tambahAdminWarnet')->name('add');
             Route::match(['get', 'post'], '{id_adminWarnet}/ubah', 'ubahAdminWarnet')->name('edit');
             Route::delete('{id_adminWarnet}/hapus', 'hapusAdminWarnet')->name('delete');
+            Route::get('/export', 'export')->name('export');
         });
 
     Route::controller(CustomerController::class)
@@ -63,7 +66,7 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
         ->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('/getData', 'dataTable')->name('data');
-            Route::post('showdata', 'dataTable')->name('dataTable');
+            Route::get('showdata', 'dataTable')->name('dataTable');
             Route::match(['get', 'post'], 'tambah', 'tambahCustomer')->name('add');
             Route::match(['get', 'post'], '{id_customer}/ubah', 'ubahCustomer')->name('edit');
             Route::delete('{id_customer}/hapus', 'hapusCustomer')->name('delete');

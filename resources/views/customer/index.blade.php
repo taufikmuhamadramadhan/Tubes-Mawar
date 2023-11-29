@@ -1,8 +1,8 @@
 @extends('layouts.base_admin.base_dashboard')
 @section('judul', 'List Akun')
 @section('script_head')
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
 
 @section('content')
@@ -65,18 +65,35 @@
             "processing": true,
             "ajax": {
                 "url": "{{ route('customer.dataTable') }}",
-                "type": "POST",
+                "type": "GET",
                 "data": {
                     _token: "{{csrf_token()}}"
                 }
             },
-            "columns": [
-                { "data": "nama_customer", "name": "nama_customer" },
-                { "data": "username", "name": "username" },
-                { "data": "billing", "name": "billing" },
-                { "data": "no_telp", "name": "no_telp" },
-                { "data": "create_date", "name": "create_date" },
-                { "data": "options", "name": "options" }
+            "columns": [{
+                    "data": "nama_customer",
+                    "name": "nama_customer"
+                },
+                {
+                    "data": "username",
+                    "name": "username"
+                },
+                {
+                    "data": "billing",
+                    "name": "billing"
+                },
+                {
+                    "data": "no_telp",
+                    "name": "no_telp"
+                },
+                {
+                    "data": "create_date",
+                    "name": "create_date"
+                },
+                {
+                    "data": "options",
+                    "name": "options"
+                }
             ],
         });
 

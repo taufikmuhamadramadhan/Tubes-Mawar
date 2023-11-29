@@ -1,8 +1,8 @@
 @extends('layouts.base_admin.base_dashboard')
 
 @section('script_head')
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
 
 @section('content')
@@ -41,7 +41,7 @@
                 <tbody> </tbody>
             </table>
             <div class="col-sm-12 col-md-7">
-            <a href="{{ route('list_komputer.create') }}" class="btn btn-primary">Tambah Komputer</a>
+                <a href="{{ route('list_komputer.create') }}" class="btn btn-primary">Tambah Komputer</a>
             </div>
         </div>
     </div>
@@ -63,26 +63,29 @@
                     _token: "{{csrf_token()}}"
                 }
             },
-            "columns": [
-                { 
-                "data": "nama_warnet",
-                "name": "nama_warnet"
-                },
-                { 
-                "data": "id_komputer",
-                "name": "id_komputer"
+            "columns": [{
+                    "data": "nama_warnet",
+                    "name": "nama_warnet"
                 },
                 {
-                "data": "processor",
-                "name": "processor"
+                    "data": "id_komputer",
+                    "name": "id_komputer"
                 },
                 {
-                "data": "ram",
-                "name": "ram"
+                    "data": "processor",
+                    "name": "processor"
                 },
-                { 
-                "data": "gpu",
-                "name": "gpu"
+                {
+                    "data": "ram",
+                    "name": "ram"
+                },
+                {
+                    "data": "gpu",
+                    "name": "gpu"
+                },
+                {
+                    "data": "options",
+                    "name": "options"
                 },
             ],
 
