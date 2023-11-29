@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class AdminWarnet extends Authenticatable
 {
+    protected $primaryKey = 'id_adminWarnet';
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -18,10 +19,8 @@ class AdminWarnet extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'id_adminWarnet',
         'name',
         'email',
-        'nameWarnet',
         'password',
         'id_warnet',
     ];
@@ -49,6 +48,6 @@ class AdminWarnet extends Authenticatable
 
     public function warnet()
     {
-        return $this->belongsTo(warnet::class, 'id_warnet', 'id');
+        return $this->belongsTo(Warnet::class, 'id_warnet');
     }
 }

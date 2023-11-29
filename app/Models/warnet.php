@@ -19,4 +19,9 @@ class warnet extends Model
     {
         return $this->hasOne(AdminWarnet::class, 'id_warnet', 'id');
     }
+
+    public function listKomputers()
+    {
+        return $this->hasMany(ListKomputer::class, 'id_warnet'); // Menyesuaikan nama kolom foreign key
+    }
 }

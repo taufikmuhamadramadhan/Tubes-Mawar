@@ -64,13 +64,12 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="inputName">Nama Warnet</label>
-                            <input type="text" id="inputNameWarnet" name="nameWarnet" class="form-control @error('nameWarnet') is-invalid @enderror" placeholder="Masukkan Nama Warnet" value="{{ $usr->nameWarnet }}" required="required" autocomplete="nameWarnet">
-                            @error('nameWarnet')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <label for="id_warnet">Pilih Warnet:</label>
+                            <select name="id_warnet" id="id_warnet" class="form-control">
+                                @foreach($warnets as $warnet)
+                                <option value="{{ $warnet->id_warnet }}">{{ $warnet->nama_warnet }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
 
