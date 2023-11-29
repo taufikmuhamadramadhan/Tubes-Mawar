@@ -55,6 +55,20 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
             Route::match(['get', 'post'], '{id_adminWarnet}/ubah', 'ubahAdminWarnet')->name('edit');
             Route::delete('{id_adminWarnet}/hapus', 'hapusAdminWarnet')->name('delete');
         });
+
+    // Route::controller(WarnetController::class)
+    //     ->prefix('warnet')
+    //     ->as('warnet.')
+    //     ->group(function () {
+    //         Route::get('/', 'index')->name('index');
+    //         Route::get('/create','create')->name('create');
+    //         Route::post('/', 'store')->name('store');
+    //         Route::get('/{warnet}', 'show')->name('show');
+    //         Route::get('/{warnet}/edit', 'edit')->name('edit');
+    //         Route::put('/{warnet}','update')->name('update');
+    //         Route::delete('/{warnet}','destroy')->name('destroy');
+    //         Route::get('/data','dataTable')->name('dataTable');
+    // });
 });
 
 Route::group(['prefix' => 'dashboard/admin/list_komputer'], function () {
@@ -90,3 +104,6 @@ Route::put('/warnet/{warnet}', [WarnetController::class, 'update'])->name('warne
 
 // Remove the specified warnet from the database
 Route::delete('/warnet/{warnet}', [WarnetController::class, 'destroy'])->name('warnet.destroy');
+
+Route::post('/warnet/data', [WarnetController::class, 'dataTable'])->name('warnet.dataTable');
+Route::get('warnet/export-pdf', [WarnetController::class, 'exportPdf'])->name('warnet.exportPdf');

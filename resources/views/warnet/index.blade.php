@@ -1,11 +1,17 @@
 <!-- resources/views/warnet/index.blade.php -->
 @extends('layouts.base_admin.base_dashboard')
 
+@section('script_head')
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@endsection
+
 @section('content')
     <div class="container">
         <h2>Warnet List</h2>
         <a href="{{ route('warnet.create') }}" class="btn btn-primary">Add Warnet</a>
-        <table class="table mt-3">
+        <a href="{{ route('warnet.exportPdf') }}" class="btn btn-warning">Export to PDF</a>
+        <table class="table mt-3" id="warnet-table">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -14,24 +20,78 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach($warnet as $warnetItem)
-                    <tr>
-                        <td>{{ $warnetItem->id_warnet }}</td>
-                        <td>{{ $warnetItem->nama_warnet }}</td>
-                        <td>{{ $warnetItem->alamat }}</td>
-                        <td>
-                            <a href="{{ route('warnet.show', $warnetItem->id_warnet) }}" class="btn btn-info">Show</a>
-                            <a href="{{ route('warnet.edit', $warnetItem->id_warnet) }}" class="btn btn-primary">Edit</a>
-                            <form action="{{ route('warnet.destroy', $warnetItem->id_warnet) }}" method="POST" style="display: inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
         </table>
     </div>
-@endsection
+    @endsection @section('script_footer')
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#warnet-table').DataTable({
+                    "serverSide": true,
+                    "processing": true,
+                    "ajax": {
+                        "url": "{{ route('warnet.dataTable') }}",
+                        "type": "POST",
+                        "data": {
+                            _token: "{{csrf_token()}}"
+                        }
+                    },
+                    "columns": [{
+                        "data": "id_warnet",
+                        "name": "id_warnet"
+                    },
+                    {
+                        "data": "nama_warnet",
+                        "name": "nama_warnet"
+                    },
+                    {
+                        "data": "alamat",
+                        "name": "alamat"
+                    },
+                    {
+                        "data": "options",
+                        "name": "options"
+                    }
+                ],
+
+                });
+            });
+
+            // hapus data
+            $('#warnet-table').on('click', '.hapusData', function() {
+                var id = $(this).data("id");
+                var url = $(this).data("url");
+                Swal
+                    .fire({
+                        title: 'Apa kamu yakin?',
+                        text: "Kamu tidak akan dapat mengembalikan ini!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Ya, hapus!',
+                        cancelButtonText: 'Batal'
+                    })
+                    .then((result) => {
+                        if (result.isConfirmed) {
+                            // console.log();
+                            $.ajax({
+                                url: url,
+                                type: 'DELETE',
+                                data: {
+                                    "id": id,
+                                    "_token": "{{csrf_token()}}"
+                                },
+                                success: function(response) {
+                                    // console.log();
+                                    Swal.fire('Terhapus!', response.msg, 'success');
+                                    $('#warnet-table').DataTable().ajax.reload();
+                                }
+                            });
+                        }
+                    })
+            });
+    </script>
+    @endsection
+

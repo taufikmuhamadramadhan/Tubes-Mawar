@@ -1,4 +1,5 @@
 @extends('layouts.base_admin.base_auth') @section('judul', 'Halaman Login') @section('content')
+
 <div class="login-box">
     <div class="login-logo">
         <a href="#">
