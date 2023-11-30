@@ -70,6 +70,7 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
             Route::match(['get', 'post'], 'tambah', 'tambahCustomer')->name('add');
             Route::match(['get', 'post'], '{id_customer}/ubah', 'ubahCustomer')->name('edit');
             Route::delete('{id_customer}/hapus', 'hapusCustomer')->name('delete');
+            Route::get('/export', 'export')->name('export');
         });
 
     Route::controller(ListKomputerController::class)
