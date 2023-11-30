@@ -42,6 +42,7 @@
             </table>
             <div class="col-sm-12 col-md-7">
                 <a href="{{ route('list_komputer.create') }}" class="btn btn-primary">Tambah Komputer</a>
+                <a href="{{ route('list_komputer.exportPdf') }}" class="btn btn-success">Export PDF</a>
             </div>
         </div>
     </div>
