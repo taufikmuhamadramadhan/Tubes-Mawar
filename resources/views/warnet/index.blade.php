@@ -9,12 +9,13 @@
 @section('content')
     <div class="container">
         <h2>Warnet List</h2>
-        <a href="{{ route('warnet.create') }}" class="btn btn-primary">Add Warnet</a>
-        <form action="{{ route('warnet.exportPdf') }}" method="POST">
-    @csrf
-    <button type="submit" class="btn btn-warning">Export to PDF</button>
-</form>
-
+        <div class="d-flex mb-3">
+                <a href="{{ route('warnet.create') }}" class="btn btn-primary">Add Warnet</a> 
+                <form action="{{ route('warnet.exportPdf') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-warning ml-2">Export to PDF</button>
+                </form>
+        </div>
         <table class="table mt-3" id="warnet-table">
             <thead>
                 <tr>
