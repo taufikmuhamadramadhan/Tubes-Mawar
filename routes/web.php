@@ -85,6 +85,20 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
             Route::put('{id}', 'update')->name('update');
             Route::delete('{id}', 'destroy')->name('destroy');
         });
+
+    // Route::controller(WarnetController::class)
+    //     ->prefix('warnet')
+    //     ->as('warnet.')
+    //     ->group(function () {
+    //         Route::get('/', 'index')->name('index');
+    //         Route::get('/create','create')->name('create');
+    //         Route::post('/', 'store')->name('store');
+    //         Route::get('/{warnet}', 'show')->name('show');
+    //         Route::get('/{warnet}/edit', 'edit')->name('edit');
+    //         Route::put('/{warnet}','update')->name('update');
+    //         Route::delete('/{warnet}','destroy')->name('destroy');
+    //         Route::get('/data','dataTable')->name('dataTable');
+    // });
 });
 
 
@@ -111,3 +125,8 @@ Route::put('/warnet/{warnet}', [WarnetController::class, 'update'])->name('warne
 
 // Remove the specified warnet from the database
 Route::delete('/warnet/{warnet}', [WarnetController::class, 'destroy'])->name('warnet.destroy');
+
+Route::post('/warnet/data', [WarnetController::class, 'dataTable'])->name('warnet.dataTable');
+Route::match(['get', 'post'], 'warnet/export-pdf', [WarnetController::class, 'exportPdf'])->name('warnet.exportPdf');
+
+
