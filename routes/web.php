@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WarnetController;
 use App\Http\Controllers\ListKomputerController;
 use App\Http\Controllers\customerController;
+use App\Http\Controllers\DataWarnetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,22 +86,9 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
             Route::delete('{id}', 'destroy')->name('destroy');
             Route::match(['get', 'post'], 'export-pdf', 'exportPdf')->name('exportPdf');
         });
-
-    // Route::controller(WarnetController::class)
-    //     ->prefix('warnet')
-    //     ->as('warnet.')
-    //     ->group(function () {
-    //         Route::get('/', 'index')->name('index');
-    //         Route::get('/create','create')->name('create');
-    //         Route::post('/', 'store')->name('store');
-    //         Route::get('/{warnet}', 'show')->name('show');
-    //         Route::get('/{warnet}/edit', 'edit')->name('edit');
-    //         Route::put('/{warnet}','update')->name('update');
-    //         Route::delete('/{warnet}','destroy')->name('destroy');
-    //         Route::get('/data','dataTable')->name('dataTable');
-    // });
 });
 
+Route::get('/dataWarnet', [DataWarnetController::class, 'index'])->name('dashboard.dataWarnet');;
 
 
 

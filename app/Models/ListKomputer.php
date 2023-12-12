@@ -9,6 +9,7 @@ class ListKomputer extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id_komputer';
     protected $table = 'list_komputer';
 
     protected $fillable = [
