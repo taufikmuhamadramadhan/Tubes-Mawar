@@ -44,7 +44,6 @@
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">Informasi Data Komputer</h3>
-
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                 <i class="fas fa-minus"></i>
@@ -65,6 +64,18 @@
                         <div class="form-group">
                             <label for="nama_komputer">Nama Komputer</label>
                             <input type="text" name="nama_komputer" class="form-control" value="{{ $listKomputer->nama_komputer }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="processor">Processor</label>
+                            <input type="text" name="processor" class="form-control" value="{{ $listKomputer->processor }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ram">Ram</label>
+                            <input type="text" name="ram" class="form-control" value="{{ $listKomputer->ram }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gpu">GPU</label>
+                            <input type="text" name="gpu" class="form-control" value="{{ $listKomputer->gpu }}" required>
                         </div>
                         <!-- Add other form fields as needed -->
                     </div>

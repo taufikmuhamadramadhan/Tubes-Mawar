@@ -4,7 +4,7 @@
 <div class="content">
     <h2><strong>Data Warnet</strong></h2>
     <div class="row">
-        @foreach ($warnets as $warnet)
+        @forelse ($warnets as $warnet)
             <div class="col-sm-6 mb-4">
                 <div class="card">
                     <div class="card-body">
@@ -14,6 +14,8 @@
                     </div>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <h5 class="card-title text-black">No data available</h5>
+        @endforelse
     </div>
 @endsection
