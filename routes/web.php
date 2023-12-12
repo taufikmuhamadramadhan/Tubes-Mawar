@@ -2,11 +2,14 @@
 
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\adminWarnetController;
+use App\Exports\AdminWarnetExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WarnetController;
 use App\Http\Controllers\ListKomputerController;
+use App\Http\Controllers\customerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,19 +57,51 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
             Route::match(['get', 'post'], 'tambah', 'tambahAdminWarnet')->name('add');
             Route::match(['get', 'post'], '{id_adminWarnet}/ubah', 'ubahAdminWarnet')->name('edit');
             Route::delete('{id_adminWarnet}/hapus', 'hapusAdminWarnet')->name('delete');
+            Route::get('/export', 'export')->name('export');
         });
+
+    Route::controller(CustomerController::class)
+        ->prefix('customer')
+        ->as('customer.')
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/getData', 'dataTable')->name('data');
+            Route::get('showdata', 'dataTable')->name('dataTable');
+            Route::match(['get', 'post'], 'tambah', 'tambahCustomer')->name('add');
+            Route::match(['get', 'post'], '{id_customer}/ubah', 'ubahCustomer')->name('edit');
+            Route::delete('{id_customer}/hapus', 'hapusCustomer')->name('delete');
+        });
+
+    Route::controller(ListKomputerController::class)
+        ->prefix('dashboard/admin/list_komputer')
+        ->as('list_komputer.')
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('showdata', 'dataTable')->name('dataTable'); // Corrected name here
+            Route::get('create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::get('{id}', 'show')->name('show');
+            Route::get('{id}/edit', 'edit')->name('edit');
+            Route::put('{id}', 'update')->name('update');
+            Route::delete('{id}', 'destroy')->name('destroy');
+        });
+
+    // Route::controller(WarnetController::class)
+    //     ->prefix('warnet')
+    //     ->as('warnet.')
+    //     ->group(function () {
+    //         Route::get('/', 'index')->name('index');
+    //         Route::get('/create','create')->name('create');
+    //         Route::post('/', 'store')->name('store');
+    //         Route::get('/{warnet}', 'show')->name('show');
+    //         Route::get('/{warnet}/edit', 'edit')->name('edit');
+    //         Route::put('/{warnet}','update')->name('update');
+    //         Route::delete('/{warnet}','destroy')->name('destroy');
+    //         Route::get('/data','dataTable')->name('dataTable');
+    // });
 });
 
-Route::group(['prefix' => 'dashboard/admin/list_komputer'], function () {
-    Route::get('/', [ListKomputerController::class, 'index'])->name('list_komputer.index');
-    Route::post('showdata', [ListKomputerController::class, 'dataTable'])->name('list_komputer.dataTable');
-    Route::get('/create', [ListKomputerController::class, 'create'])->name('list_komputer.create');
-    Route::post('/', [ListKomputerController::class, 'store'])->name('list_komputer.store');
-    Route::get('/{id}', [ListKomputerController::class, 'show'])->name('list_komputer.show');
-    Route::get('/{id}/edit', [ListKomputerController::class, 'edit'])->name('list_komputer.edit');
-    Route::put('/{id}', [ListKomputerController::class, 'update'])->name('list_komputer.update');
-    Route::delete('/{id}', [ListKomputerController::class, 'destroy'])->name('list_komputer.destroy');
-});
+
 
 
 //warnet
@@ -90,3 +125,8 @@ Route::put('/warnet/{warnet}', [WarnetController::class, 'update'])->name('warne
 
 // Remove the specified warnet from the database
 Route::delete('/warnet/{warnet}', [WarnetController::class, 'destroy'])->name('warnet.destroy');
+
+Route::post('/warnet/data', [WarnetController::class, 'dataTable'])->name('warnet.dataTable');
+Route::match(['get', 'post'], 'warnet/export-pdf', [WarnetController::class, 'exportPdf'])->name('warnet.exportPdf');
+
+

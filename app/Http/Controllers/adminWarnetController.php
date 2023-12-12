@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\AdminWarnetExport;
 
 class adminWarnetController extends Controller
 {
@@ -32,27 +34,32 @@ class adminWarnetController extends Controller
             ->make(true);
     }
 
-    public function getData(Request $request)
+    public function export()
     {
-        if ($request->ajax()) {
-            $id_warnet = $request->input('id_warnet'); // Adjust this line based on how you pass the id_warnet
-
-            $data = AdminWarnet::with('warnet:id_warnet,nama_warnet')
-                ->where('id_warnet', $id_warnet)
-                ->select('*');
-
-            return datatables()->of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-                    return $actionBtn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
-
-        return view('page.admin.adminWarnet.index');
+        return Excel::download(new AdminWarnetExport(), 'adminWarnet.xlsx');
     }
+
+    // public function getData(Request $request)
+    // {
+    //     if ($request->ajax()) {
+    //         $id_warnet = $request->input('id_warnet'); // Adjust this line based on how you pass the id_warnet
+
+    //         $data = AdminWarnet::with('warnet:id_warnet,nama_warnet')
+    //             ->where('id_warnet', $id_warnet)
+    //             ->select('*');
+
+    //         return datatables()->of($data)
+    //             ->addIndexColumn()
+    //             ->addColumn('action', function ($row) {
+    //                 $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+    //                 return $actionBtn;
+    //             })
+    //             ->rawColumns(['action'])
+    //             ->make(true);
+    //     }
+
+    //     return view('page.admin.adminWarnet.index');
+    // }
 
     // public function dataTable(Request $request)
     // {

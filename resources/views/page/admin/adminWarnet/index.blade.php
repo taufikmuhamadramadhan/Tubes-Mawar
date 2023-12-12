@@ -50,6 +50,7 @@
         <div class="card-body p-0" style="margin: 20px">
             <table id="previewAkun" class="table table-striped table-bordered display" style="width:100%">
                 <a href="{{ route('adminWarnet.add') }}" class="btn btn-primary">Tambah Akun</a>
+                <a href="{{ route('adminWarnet.export') }}" class="btn btn-danger ml-2">Export Data</a>
                 <thead>
                     <tr>
                         <th>Nama</th>

@@ -21,6 +21,6 @@ class ListKomputer extends Model
 
     public function warnet()
     {
-        return $this->belongsTo(Warnet::class);
+        return $this->belongsTo(Warnet::class, 'id_warnet');
     }
 }
