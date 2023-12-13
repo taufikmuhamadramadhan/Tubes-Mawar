@@ -11,7 +11,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>No</th>
                     <th>Warnet</th>
                     <th>Komputer</th>
                     <th>Customer</th>
@@ -21,9 +21,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($billings as $billing)
+                @foreach($billings as $index => $billing)
                 <tr>
-                    <td>{{ $billing->id }}</td>
+                    <td>{{ $index + 1 }}</td>
                     <td>{{ $billing->warnet->nama_warnet }}</td>
                     <td>{{ $billing->komputer->nama_komputer }}</td>
                     <td>{{ $billing->customer->nama_customer }}</td>
@@ -33,6 +33,7 @@
                 </tr>
                 @endforeach
             </tbody>
+
         </table>
     </div>
 </div>

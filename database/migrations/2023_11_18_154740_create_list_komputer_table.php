@@ -24,6 +24,9 @@ class CreateListKomputerTable extends Migration
 
     public function down()
     {
+        Schema::table('billing', function (Blueprint $table) {
+            $table->dropForeign(['id_komputer']);
+        });
         Schema::dropIfExists('list_komputer');
     }
 }

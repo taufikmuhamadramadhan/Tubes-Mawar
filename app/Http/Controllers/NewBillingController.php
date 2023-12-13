@@ -20,7 +20,7 @@ class NewBillingController extends Controller
 
     public function exportPdf()
     {
-        $billings = NewBilling::all(); // Use the correct model name
+        $billings = NewBilling::with('warnet', 'komputer', 'customer')->get(); // Use the correct model name
 
         $mpdf = new \Mpdf\Mpdf();
         $pdfHtml = view('billing.pdf', compact('billings'))->render();

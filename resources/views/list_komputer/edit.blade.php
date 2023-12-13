@@ -55,9 +55,9 @@
                             <label for="id_warnet">Nama Warnet</label>
                             <select name="id_warnet" class="form-control">
                                 @foreach($warnets as $warnet)
-                                    <option value="{{ $warnet->id_warnet }}" {{ $warnet->id_warnet == $listKomputer->id_warnet ? 'selected' : '' }}>
-                                        {{ $warnet->nama_warnet }}
-                                    </option>
+                                <option value="{{ $warnet->id_warnet }}" {{ $warnet->id_warnet == $listKomputer->id_warnet ? 'selected' : '' }}>
+                                    {{ $warnet->nama_warnet }}
+                                </option>
                                 @endforeach
                             </select>
                         </div>
@@ -76,6 +76,10 @@
                         <div class="form-group">
                             <label for="gpu">GPU</label>
                             <input type="text" name="gpu" class="form-control" value="{{ $listKomputer->gpu }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="harga">Harga</label>
+                            <input type="number" name="harga" class="form-control" value="{{ $listKomputer->harga }}" required>
                         </div>
                         <!-- Add other form fields as needed -->
                     </div>

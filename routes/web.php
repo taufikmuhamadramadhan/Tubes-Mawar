@@ -51,14 +51,20 @@ Route::post('/register/customer', [CustomerAuthController::class, 'registerCusto
 
 Route::middleware('auth:customers')->group(function () {
     // Routes for authenticated customers
-    Route::prefix('/customer')->group(function () {
-        Route::get('/', [DataWarnetController::class, 'index'])->name('dashboard.customer');
-        Route::get('/dataKomputer', [DataKomputerController::class, 'index'])->name('dataKomputer.index');
+    // Route::prefix('/customer')->group(function () {
+    //     Route::get('/', [DataWarnetController::class, 'index'])->name('dashboard.customer');
+    //     Route::get('/dataKomputer', [DataKomputerController::class, 'index'])->name('dataKomputer.index');
 
-        Route::post('/dataKomputer/store', [DataKomputerController::class, 'store'])->name('dataKomputer.store');
-        Route::get('/billings', [NewBillingController::class, 'index'])->name('billing.index');
-        Route::match(['get', 'post'], 'billing/export-pdf', [NewBillingController::class, 'exportPdf'])->name('billing.exportPdf');
-    });
+    //     Route::post('/dataKomputer/store', [DataKomputerController::class, 'store'])->name('dataKomputer.store');
+    //     Route::get('/billings', [NewBillingController::class, 'index'])->name('billing.index');
+    //     Route::match(['get', 'post'], 'billing/export-pdf', [NewBillingController::class, 'exportPdf'])->name('billing.exportPdf');
+    // });
+    Route::get('/customer', [DataWarnetController::class, 'index'])->name('dashboard.customer');
+    Route::get('/dataKomputer', [DataKomputerController::class, 'index'])->name('dataKomputer.index');
+
+    Route::post('/dataKomputer/store', [DataKomputerController::class, 'store'])->name('dataKomputer.store');
+    Route::get('/billings', [NewBillingController::class, 'index'])->name('billing.index');
+    Route::match(['get', 'post'], 'billing/export-pdf', [NewBillingController::class, 'exportPdf'])->name('billing.exportPdf');
 });
 
 Route::group(['prefix' => '/admin'], function () {
@@ -194,16 +200,16 @@ Route::middleware('auth:web')->group(function () {
 
 
 
-Route::get('/dataWarnet', [DataWarnetController::class, 'index'])->name('dashboard.dataWarnet');
+// Route::get('/dataWarnet', [DataWarnetController::class, 'index'])->name('dashboard.dataWarnet');
 
-Route::get('/dataKomputer', [DataKomputerController::class, 'index'])->name('dataKomputer.index');
+// Route::get('/dataKomputer', [DataKomputerController::class, 'index'])->name('dataKomputer.index');
 
-// Route::post('/dataKomputer/store', [DataKomputerController::class, 'store'])->name('dataKomputer.store');
-Route::get('/billings', [NewBillingController::class, 'index'])->name('billing.index');
-Route::match(['get', 'post'], 'billing/export-pdf', [NewBillingController::class, 'exportPdf'])->name('billing.exportPdf');
+// // Route::post('/dataKomputer/store', [DataKomputerController::class, 'store'])->name('dataKomputer.store');
+// Route::get('/billings', [NewBillingController::class, 'index'])->name('billing.index');
+// Route::match(['get', 'post'], 'billing/export-pdf', [NewBillingController::class, 'exportPdf'])->name('billing.exportPdf');
 
 
-Route::post('/dataKomputer', [DataKomputerController::class, 'store'])->name('dataKomputer.store');
+// Route::post('/dataKomputer', [DataKomputerController::class, 'store'])->name('dataKomputer.store');
 
 //warnet
 // Display the warnet list

@@ -19,7 +19,7 @@
                 <h2 class="logo">Mawar</h2>
             </div class>
             <ul>
-                <li><a href="dataWarnet">Warnet</a></li>
+                <li><a href="{{route('dashboard.customer')}}">Warnet</a></li>
             </ul>
             <ul>
                 <li><a href="billings">Billing</a></li>
