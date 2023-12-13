@@ -12,6 +12,7 @@ use App\Http\Controllers\ListKomputerController;
 use App\Http\Controllers\customerController;
 use App\Http\Controllers\AdminWarnetAuthController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DataWarnetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,6 +143,8 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
     // });
 })->middleware('checkrole:adminWarnet');
 
+
+Route::get('/dataWarnet', [DataWarnetController::class, 'index'])->name('dashboard.dataWarnet');;
 
 
 
