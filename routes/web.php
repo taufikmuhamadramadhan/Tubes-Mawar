@@ -13,6 +13,7 @@ use App\Http\Controllers\customerController;
 use App\Http\Controllers\DataWarnetController;
 use App\Http\Controllers\DataKomputerController;
 use App\Http\Controllers\BillingController;
+use App\Http\Controllers\NewBillingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -123,4 +124,5 @@ Route::post('/warnet/data', [WarnetController::class, 'dataTable'])->name('warne
 Route::match(['get', 'post'], 'warnet/export-pdf', [WarnetController::class, 'exportPdf'])->name('warnet.exportPdf');
 
 
-Route::get('/billings', [NewBillingController::class, 'index'])->name('billings.index');
+Route::get('/billings', [NewBillingController::class, 'index'])->name('billing.index'); 
+Route::match(['get', 'post'], 'billing/export-pdf', [NewBillingController::class, 'exportPdf'])->name('billing.exportPdf');

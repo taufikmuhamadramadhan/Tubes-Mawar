@@ -18,4 +18,15 @@ class NewBillingController extends Controller
         return view('billing.index', compact('billings'));
     }
 
+    public function exportPdf()
+    {
+        $billings = NewBilling::all(); // Use the correct model name
+
+        $mpdf = new \Mpdf\Mpdf();
+        $pdfHtml = view('billing.pdf', compact('billings'))->render();
+
+        $mpdf->WriteHTML($pdfHtml);
+        $mpdf->Output('billing_list.pdf', 'D');
+    }
+
 }

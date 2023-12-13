@@ -22,7 +22,7 @@
                     <li><a href="dataWarnet">Warnet</a></li>
                 </ul>
                 <ul>
-                    <li><a href="cv">Billing</a></li>
+                    <li><a href="billings">Billing</a></li>
                 </ul>
 
             <div class="right-menu">
