@@ -198,11 +198,12 @@ Route::get('/dataWarnet', [DataWarnetController::class, 'index'])->name('dashboa
 
 Route::get('/dataKomputer', [DataKomputerController::class, 'index'])->name('dataKomputer.index');
 
-Route::post('/dataKomputer/store', [DataKomputerController::class, 'store'])->name('dataKomputer.store');
+// Route::post('/dataKomputer/store', [DataKomputerController::class, 'store'])->name('dataKomputer.store');
 Route::get('/billings', [NewBillingController::class, 'index'])->name('billing.index');
 Route::match(['get', 'post'], 'billing/export-pdf', [NewBillingController::class, 'exportPdf'])->name('billing.exportPdf');
 
 
+Route::post('/dataKomputer', [DataKomputerController::class, 'store'])->name('dataKomputer.store');
 
 //warnet
 // Display the warnet list
