@@ -16,6 +16,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DataWarnetController;
 use App\Http\Controllers\DataKomputerController;
 use App\Http\Controllers\BillingController;
+use App\Http\Controllers\NewBillingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +51,14 @@ Route::post('/register/customer', [CustomerAuthController::class, 'registerCusto
 
 Route::middleware('auth:customers')->group(function () {
     // Routes for authenticated customers
-    Route::get('/customer', [DataWarnetController::class, 'index'])->name('dashboard.customer');
+    Route::prefix('/customer')->group(function () {
+        Route::get('/', [DataWarnetController::class, 'index'])->name('dashboard.customer');
+        Route::get('/dataKomputer', [DataKomputerController::class, 'index'])->name('dataKomputer.index');
+
+        Route::post('/dataKomputer/store', [DataKomputerController::class, 'store'])->name('dataKomputer.store');
+        Route::get('/billings', [NewBillingController::class, 'index'])->name('billing.index');
+        Route::match(['get', 'post'], 'billing/export-pdf', [NewBillingController::class, 'exportPdf'])->name('billing.exportPdf');
+    });
 });
 
 Route::group(['prefix' => '/admin'], function () {
@@ -186,12 +194,15 @@ Route::middleware('auth:web')->group(function () {
 
 
 
-Route::get('/dataWarnet', [DataWarnetController::class, 'index'])->name('dashboard.dataWarnet');;
 Route::get('/dataWarnet', [DataWarnetController::class, 'index'])->name('dashboard.dataWarnet');
 
 Route::get('/dataKomputer', [DataKomputerController::class, 'index'])->name('dataKomputer.index');
 
 Route::post('/dataKomputer/store', [DataKomputerController::class, 'store'])->name('dataKomputer.store');
+Route::get('/billings', [NewBillingController::class, 'index'])->name('billing.index');
+Route::match(['get', 'post'], 'billing/export-pdf', [NewBillingController::class, 'exportPdf'])->name('billing.exportPdf');
+
+
 
 //warnet
 // Display the warnet list

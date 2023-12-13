@@ -63,6 +63,7 @@ class ListKomputerController extends Controller
             'processor' => 'required',
             'ram' => 'required',
             'gpu' => 'required',
+            'harga' => 'required|numeric', // Add the validation for 'harga'
         ]);
 
         ListKomputer::create($request->all());
@@ -92,6 +93,7 @@ class ListKomputerController extends Controller
             'processor' => 'required',
             'ram' => 'required',
             'gpu' => 'required',
+            'harga' => 'required|numeric', // Add the validation for 'harga'
         ]);
 
         $listKomputer = ListKomputer::find($id);

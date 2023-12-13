@@ -33,7 +33,7 @@
                     <li><a href="dataWarnet">Warnet</a></li>
                 </ul>
                 <ul>
-                    <li><a href="cv">Billing</a></li>
+                    <li><a href="billings">Billing</a></li>
                 </ul>
 >>>>>>> ddd45b5b9034b92bcd3ad152d3f80f0252992ba3
 

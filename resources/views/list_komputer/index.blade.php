@@ -35,6 +35,7 @@
                         <th style="width: 15%">Processor</th>
                         <th style="width: 15%">Ram</th>
                         <th style="width: 15%">GPU</th>
+                        <th style="width: 15%">Harga</th>
                         <th style="width: 25%">Action</th>
                     </tr>
                 </thead>
@@ -83,6 +84,10 @@
                 {
                     "data": "gpu",
                     "name": "gpu"
+                },
+                {
+                    "data": "harga", // Added 'harga' column
+                    "name": "harga"
                 },
                 {
                     "data": "options",

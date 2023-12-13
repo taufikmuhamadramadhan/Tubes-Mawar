@@ -9,7 +9,7 @@ class NewBilling extends Model
 {
     use HasFactory;
 
-    protected $table = 'billing';
+    protected $table = 'new_billing';
 
     protected $fillable = [
         'id_warnet',
@@ -19,6 +19,7 @@ class NewBilling extends Model
         'exp_date',
         'harga',
     ];
+
     // Define relationships
     public function warnet()
     {

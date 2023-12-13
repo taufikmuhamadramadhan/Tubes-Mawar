@@ -18,6 +18,7 @@ class ListKomputer extends Model
         'processor',
         'ram',
         'gpu',
+        'harga', // Added new column 'harga' to the fillable array
     ];
 
     public function warnet()
@@ -25,3 +26,4 @@ class ListKomputer extends Model
         return $this->belongsTo(Warnet::class, 'id_warnet');
     }
 }
+

@@ -6,9 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
-        Schema::create('billing', function (Blueprint $table) {
+        Schema::create('new_billing', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_warnet');
             $table->foreignId('id_komputer');
@@ -24,8 +29,13 @@ return new class extends Migration
         });
     }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
-        Schema::dropIfExists('billing');
+        Schema::dropIfExists('new_billing');
     }
 };
