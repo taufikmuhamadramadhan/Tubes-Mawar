@@ -18,24 +18,12 @@
             <div class="icon">
                 <h2 class="logo">Mawar</h2>
             </div class>
-<<<<<<< HEAD
             <ul>
                 <li><a href="dataWarnet">Warnet</a></li>
             </ul>
             <ul>
-                <li><a href="cv">Komputer</a></li>
+                <li><a href="billings">Billing</a></li>
             </ul>
-            <ul>
-                <li><a href="cv">Billing</a></li>
-            </ul>
-=======
-                <ul>
-                    <li><a href="dataWarnet">Warnet</a></li>
-                </ul>
-                <ul>
-                    <li><a href="billings">Billing</a></li>
-                </ul>
->>>>>>> ddd45b5b9034b92bcd3ad152d3f80f0252992ba3
 
             <div class="right-menu">
                 @auth
@@ -58,7 +46,7 @@
                 @else
                 <ul>
                     <li>
-                        <a class="dropdown-item" href="/login">
+                        <a class="dropdown-item" href="{{ route('customer.login') }}">
                             <i class="mdi mdi-login text-primary"></i>
                             login
                         </a>

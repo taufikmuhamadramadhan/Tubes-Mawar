@@ -14,7 +14,7 @@ class NewBillingController extends Controller
      */
     public function index()
     {
-        $billings = NewBilling::all();
+        $billings = NewBilling::with('warnet', 'komputer', 'customer')->get();
         return view('billing.index', compact('billings'));
     }
 
@@ -28,5 +28,4 @@ class NewBillingController extends Controller
         $mpdf->WriteHTML($pdfHtml);
         $mpdf->Output('billing_list.pdf', 'D');
     }
-
 }
