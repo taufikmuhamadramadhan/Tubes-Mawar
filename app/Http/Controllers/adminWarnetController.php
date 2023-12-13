@@ -142,13 +142,13 @@ class adminWarnetController extends Controller
     {
 
         if ($request->isMethod('post')) {
-            // $this->validate($request, [
-            //     'name' => 'required|string|max:200|min:3',
-            //     'email' => 'required|string|min:3|email|unique:users,email',
-            //     'password' => 'required|min:4|confirmed',
-            //     'password_confirmation' => 'required|min:4',
-            //     'id_warnet' => 'required|exists:warnet,id',
-            // ]);
+            $this->validate($request, [
+                'name' => 'required|string|max:200|min:3',
+                'email' => 'required|string|min:3|email|unique:users,email',
+                'password' => 'required|min:4|confirmed',
+                'password_confirmation' => 'required|min:4',
+                'id_warnet' => 'required',
+            ]);
 
             AdminWarnet::create([
                 'name' => $request->name,
