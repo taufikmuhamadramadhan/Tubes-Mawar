@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $warnet->nama_warnet }}</h5>
                         <p class="card-text">{{ $warnet->alamat }}</p>
-                        <a href="#" class="btn btn-primary">Lihat</a>
+                        <a href="dataKomputer" class="btn btn-primary">Lihat</a>
                     </div>
                 </div>
             </div>

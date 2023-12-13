@@ -11,6 +11,8 @@ use App\Http\Controllers\WarnetController;
 use App\Http\Controllers\ListKomputerController;
 use App\Http\Controllers\customerController;
 use App\Http\Controllers\DataWarnetController;
+use App\Http\Controllers\DataKomputerController;
+use App\Http\Controllers\BillingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,9 +91,11 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
         });
 });
 
-Route::get('/dataWarnet', [DataWarnetController::class, 'index'])->name('dashboard.dataWarnet');;
+Route::get('/dataWarnet', [DataWarnetController::class, 'index'])->name('dashboard.dataWarnet');
 
+Route::get('/dataKomputer', [DataKomputerController::class, 'index'])->name('dataKomputer.index');
 
+Route::post('/dataKomputer/store', [DataKomputerController::class, 'store'])->name('dataKomputer.store');
 
 //warnet
 // Display the warnet list

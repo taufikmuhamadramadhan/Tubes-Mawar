@@ -22,9 +22,6 @@
                     <li><a href="dataWarnet">Warnet</a></li>
                 </ul>
                 <ul>
-                    <li><a href="cv">Komputer</a></li>
-                </ul>
-                <ul>
                     <li><a href="cv">Billing</a></li>
                 </ul>
 
