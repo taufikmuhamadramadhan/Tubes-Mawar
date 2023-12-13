@@ -1,4 +1,5 @@
-@extends('layouts.base_admin.base_dashboard')@section('judul', 'List Akun')
+@extends('layouts.base_admin.base_dashboard')
+@section('judul', 'List Akun')
 @section('script_head')
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

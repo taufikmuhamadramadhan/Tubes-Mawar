@@ -14,8 +14,15 @@ use App\Exports\AdminWarnetExport;
 
 class adminWarnetController extends Controller
 {
+
+    public function dashboard()
+    {
+        return view('dashboard.adminWarnet');
+    }
+
     public function index()
     {
+
         return view('page.admin.adminWarnet.index');
     }
 

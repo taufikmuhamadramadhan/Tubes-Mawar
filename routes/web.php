@@ -10,6 +10,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WarnetController;
 use App\Http\Controllers\ListKomputerController;
 use App\Http\Controllers\customerController;
+use App\Http\Controllers\AdminWarnetAuthController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +30,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::group(['prefix' => 'dashboard/admin'], function () {
+
+Route::get('/login/admin', [AdminWarnetAuthController::class, 'showLoginForm'])->name('admin.login');
+
+Route::post('/login/admin', [AdminWarnetAuthController::class, 'login_admin'])->name('loginAdmin');
+Route::post('/logout/admin', [AdminWarnetAuthController::class, 'logout'])->name('logoutAdmin');
+
+Route::group(['prefix' => '/admin'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
     Route::group(['prefix' => 'profile'], function () {
@@ -99,7 +107,40 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
     //         Route::delete('/{warnet}','destroy')->name('destroy');
     //         Route::get('/data','dataTable')->name('dataTable');
     // });
-});
+})->middleware('checkrole:Admin');
+
+
+Route::group(['prefix' => 'dashboard/admin'], function () {
+    Route::get('/', [adminWarnetController::class, 'dashboard'])->name('adminWarnet.dashboard');
+
+    Route::controller(ListKomputerController::class)
+        ->prefix('list_komputer')
+        ->as('list_komputer.')
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('showdata', 'dataTable')->name('dataTable');
+            Route::get('create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::get('{id}/edit', 'edit')->name('edit');
+            Route::put('{id}', 'update')->name('update');
+            Route::delete('{id}', 'destroy')->name('destroy');
+            Route::match(['get', 'post'], 'export-pdf', 'exportPdf')->name('exportPdf');
+        })->middleware('checkrole:adminWarnet');
+
+    // Route::controller(WarnetController::class)
+    //     ->prefix('warnet')
+    //     ->as('warnet.')
+    //     ->group(function () {
+    //         Route::get('/', 'index')->name('index');
+    //         Route::get('/create','create')->name('create');
+    //         Route::post('/', 'store')->name('store');
+    //         Route::get('/{warnet}', 'show')->name('show');
+    //         Route::get('/{warnet}/edit', 'edit')->name('edit');
+    //         Route::put('/{warnet}','update')->name('update');
+    //         Route::delete('/{warnet}','destroy')->name('destroy');
+    //         Route::get('/data','dataTable')->name('dataTable');
+    // });
+})->middleware('checkrole:adminWarnet');
 
 
 
@@ -128,5 +169,3 @@ Route::delete('/warnet/{warnet}', [WarnetController::class, 'destroy'])->name('w
 
 Route::post('/warnet/data', [WarnetController::class, 'dataTable'])->name('warnet.dataTable');
 Route::match(['get', 'post'], 'warnet/export-pdf', [WarnetController::class, 'exportPdf'])->name('warnet.exportPdf');
-
-

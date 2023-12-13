@@ -3,14 +3,14 @@
 <div class="login-box">
     <div class="login-logo">
         <a href="#">
-            <b>Admin</b>LTE</a>
+            <b>Admin </b>Warnet</a>
     </div>
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
             <p class="login-box-msg">Masuk untuk memulai sesi Anda</p>
 
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('loginAdmin') }}">
                 @csrf
                 <div class="input-group mb-3">
                     <input id="email" type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required="required" autocomplete="email" autofocus="autofocus">
@@ -71,12 +71,12 @@
             <!-- /.social-auth-links -->
 
             <!-- <p class="mb-1">
-                <a href="{{ route('password.request') }}">Lupa password?</a>
+                
             </p> -->
-            <p class="mb-0">
+            <!-- <p class="mb-0">
                 Belum mempunyai akun?
-                <a href="{{ route('register') }}" class="text-center">Register</a>
-            </p>
+                
+            </p> -->
         </div>
         <!-- /.login-card-body -->
     </div>

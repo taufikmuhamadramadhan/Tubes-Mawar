@@ -32,7 +32,7 @@
             </div>
             @endif
 
-            {{ __('Ini Dahsboard') }}
+            {{ __('Ini Dahsboard Admin') }}
           </div>
         </div>
       </div>

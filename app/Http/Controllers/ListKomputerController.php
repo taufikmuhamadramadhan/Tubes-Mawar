@@ -6,11 +6,13 @@ use App\Models\ListKomputer;
 use App\Models\Warnet;
 use Yajra\DataTables\DataTables;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ListKomputerController extends Controller
 {
     public function index()
     {
+
         return view('list_komputer.index');
     }
 
@@ -40,7 +42,7 @@ class ListKomputerController extends Controller
         $listKomputerData = ListKomputer::with('warnet')->get();
 
         $mpdf = new \Mpdf\Mpdf();
-        
+
         $pdfHtml = view('list_komputer.pdf', compact('listKomputerData'))->render();
 
         $mpdf->WriteHTML($pdfHtml);

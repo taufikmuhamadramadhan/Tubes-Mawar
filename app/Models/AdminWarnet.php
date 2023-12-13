@@ -50,4 +50,9 @@ class AdminWarnet extends Authenticatable
     {
         return $this->belongsTo(Warnet::class, 'id_warnet');
     }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }

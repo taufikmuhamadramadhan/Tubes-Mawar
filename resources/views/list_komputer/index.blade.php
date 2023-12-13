@@ -1,4 +1,4 @@
-@extends('layouts.base_admin.base_dashboard')
+@extends('layouts.base_adminWarnet.base_dashboard')
 
 @section('script_head')
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
@@ -15,7 +15,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('home') }}">Beranda</a>
+                        <a href="{{ route('home') }}">Beranda {{request()->layout}}</a>
                     </li>
                     <li class="breadcrumb-item active">List Komputer</li>
                 </ol>

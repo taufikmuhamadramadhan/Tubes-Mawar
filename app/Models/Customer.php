@@ -51,4 +51,8 @@ class Customer extends Authenticatable
     protected $table = 'customer'; // Specify the table name
 
     // Your relationships or other methods go here
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }
