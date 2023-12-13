@@ -95,7 +95,7 @@ Route::get('/dataWarnet', [DataWarnetController::class, 'index'])->name('dashboa
 
 Route::get('/dataKomputer', [DataKomputerController::class, 'index'])->name('dataKomputer.index');
 
-Route::post('/dataKomputer/store', [DataKomputerController::class, 'store'])->name('dataKomputer.store');
+Route::post('/dataKomputer', [DataKomputerController::class, 'store'])->name('dataKomputer.store');
 
 //warnet
 // Display the warnet list

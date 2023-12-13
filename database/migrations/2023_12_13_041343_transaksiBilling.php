@@ -20,7 +20,7 @@ return new class extends Migration
 
             $table->foreign('id_warnet')->references('id_warnet')->on('warnet');
             $table->foreign('id_komputer')->references('id_komputer')->on('list_komputer');
-            $table->foreign('id_customer')->references('id_customer')->on('customer');
+            $table->foreign('id_customer')->references('id')->on('users');
         });
     }
 

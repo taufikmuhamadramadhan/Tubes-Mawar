@@ -32,6 +32,6 @@ class NewBilling extends Model
 
     public function customer()
     {
-        return $this->belongsTo(Customer::class, 'id_customer');
+        return $this->belongsTo(User::class, 'id');
     }
 }

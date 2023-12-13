@@ -4,14 +4,9 @@
 <div class="content">
     <h2><strong>Data Komputer</strong></h2>
     <div class="row">
-        @php
-            $computersWithBilling = $computers->map(function($computer) use ($billing) {
-                $computer->billing = $billing->where('id_komputer', $computer->id_komputer)->first();
-                return $computer;
-            });
-        @endphp
 
-        @forelse ($computersWithBilling as $computer)
+
+        @forelse ($data as $computer)
         <div class="col-sm-6 mb-4">
             <div class="card">
                 <div class="card-body">
@@ -32,7 +27,8 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title text-black" id="beliModalLabel{{ $computer->id_komputer }}">Beli
+                                    <h5 class="modal-title text-black" id="beliModalLabel{{ $computer->id_komputer }}">
+                                        Beli
                                         Billing</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -47,9 +43,17 @@
                                             <input type="text" class="form-control" id="billing" name="billing"
                                                 value="{{ $computer->billing->billing ?? '' }}" required>
                                         </div>
+
+                                        <!-- Gunakan variabel sebelumnya -->
+                                        <input type="hidden" name="id_komputer" value="{{ $computer->id_komputer }}">
+                                        <input type="hidden" name="id_warnet" value="{{ $computer->id_warnet }}">
+                                        <input type="hidden" name="id_customer" value="{{ Auth::id() }}">
+
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                         <a href="{{ route('dataKomputer.index') }}" class="btn btn-secondary">Cancel</a>
                                     </form>
+
+
                                 </div>
                             </div>
                         </div>
