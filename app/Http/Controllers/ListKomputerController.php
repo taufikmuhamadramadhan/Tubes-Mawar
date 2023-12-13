@@ -35,6 +35,18 @@ class ListKomputerController extends Controller
         return view('list_komputer.index');
     }
 
+    public function exportPdf()
+    {
+        $listKomputerData = ListKomputer::with('warnet')->get();
+
+        $mpdf = new \Mpdf\Mpdf();
+        
+        $pdfHtml = view('list_komputer.pdf', compact('listKomputerData'))->render();
+
+        $mpdf->WriteHTML($pdfHtml);
+        $mpdf->Output('list_komputer.pdf', 'D');
+    }
+
     public function create()
     {
         $warnets = Warnet::all();

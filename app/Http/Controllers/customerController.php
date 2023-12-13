@@ -6,6 +6,8 @@ use App\Models\Customer;
 use Yajra\DataTables\DataTables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\CustomerExport;
 
 class CustomerController extends Controller
 {
@@ -102,6 +104,11 @@ class CustomerController extends Controller
         }
 
         return view('customer.editCustomer', ['customer' => $customer]);
+    }
+
+    public function export()
+    {
+        return Excel::download(new CustomerExport(), 'customer.xlsx');
     }
 
     public function hapusCustomer($id_customer)

@@ -62,3 +62,9 @@ class NewBilling extends Model
         $this->attributes['harga'] = $this->attributes['billing'] * $hargaKomputer;
     }
 }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'id_customer');
+    }
+}
