@@ -35,6 +35,7 @@
         <div class="card-body p-0" style="margin: 20px">
             <table id="customerTable" class="table table-striped table-bordered display" style="width:100%">
                 <a href="{{ route('customer.add') }}" class="btn btn-primary">Tambah Customer</a>
+                <a href="{{ route('customer.export')}}" class="btn btn-success ml-2">Download Data</a>
                 <thead>
                     <tr>
                         <th>Nama</th>
