@@ -73,15 +73,7 @@
                             </span>
                             @enderror
                         </div>
-                        <div class="form-group">
-                            <label for="inputBilling">Billing</label>
-                            <input type="text" id="inputBilling" name="billing" class="form-control @error('billing') is-invalid @enderror" placeholder="Masukkan Billing" value="{{ $customer->billing }}" required="required" autocomplete="billing">
-                            @error('billing')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
+
                         <div class="form-group">
                             <label for="inputNoTelp">No. Telp</label>
                             <input type="text" id="inputNoTelp" name="no_telp" class="form-control @error('no_telp') is-invalid @enderror" placeholder="Masukkan No. Telp" value="{{ $customer->no_telp }}" required="required" autocomplete="no_telp">
@@ -91,15 +83,7 @@
                             </span>
                             @enderror
                         </div>
-                        <div class="form-group">
-                            <label for="inputCreateDate">Create Date</label>
-                            <input type="date" id="inputCreateDate" name="create_date" class="form-control @error('create_date') is-invalid @enderror" value="{{ $customer->create_date }}" required="required" autocomplete="create_date">
-                            @error('create_date')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
+
                     </div>
                     <!-- /.card-body -->
                 </div>

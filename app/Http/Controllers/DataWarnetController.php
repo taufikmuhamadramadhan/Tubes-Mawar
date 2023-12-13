@@ -9,6 +9,7 @@ class DataWarnetController extends Controller
 {
     public function index()
     {
+
         $warnets = Warnet::all();
         return view('dashboard.dataWarnet', compact('warnets'));
     }

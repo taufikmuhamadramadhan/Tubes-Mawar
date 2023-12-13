@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AdminWarnetAuthController extends Controller
 {
@@ -19,22 +20,20 @@ class AdminWarnetAuthController extends Controller
             'password' => 'required'
         ]);
 
+        Log::info('Trying to login with email: ' . $request->email); // Log email for debugging
+
         if (Auth::guard('admin_warnets')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
-            // Perbarui ini untuk merujuk ke nama route yang tepat
+            Log::info('Login successful for email: ' . $request->email);
             return redirect()->route('adminWarnet.dashboard');
         }
 
+        Log::warning('Login failed for email: ' . $request->email);
         return redirect()->back()->withInput($request->only('email', 'remember'));
     }
 
     public function logout()
     {
         Auth::guard('admin_warnets')->logout();
-        return redirect('/');
-    }
-
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
+        return redirect()->route('admin.login');
     }
 }

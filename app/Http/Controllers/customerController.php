@@ -56,18 +56,15 @@ class CustomerController extends Controller
                 'nama_customer' => 'required|string|max:200|min:3',
                 'username' => 'required|string|min:3|unique:customer,username',
                 'password' => 'required|min:4',
-                'billing' => 'required|integer',
-                'no_telp' => 'required|integer',
-                'create_date' => 'required|date',
+                'no_telp' => 'required|max:13',
+
             ]);
 
             Customer::create([
                 'nama_customer' => $request->nama_customer,
                 'username' => $request->username,
                 'password' => Hash::make($request->password),
-                'billing' => $request->billing,
                 'no_telp' => $request->no_telp,
-                'create_date' => $request->create_date,
             ]);
 
             return redirect()->route('customer.index')->with('status', 'Data telah tersimpan di database');
@@ -88,7 +85,7 @@ class CustomerController extends Controller
                 'no_telp' => 'required|integer',
                 'create_date' => 'required|date',
             ]);
-            
+
 
             $customer->update([
                 'nama_customer' => $request->nama_customer,

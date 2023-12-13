@@ -22,9 +22,7 @@ class Customer extends Authenticatable
         'nama_customer',
         'username',
         'password',
-        'billing',
         'no_telp',
-        'create_date',
     ];
 
     /**

@@ -18,51 +18,44 @@
             <div class="icon">
                 <h2 class="logo">Mawar</h2>
             </div class>
-                <ul>
-                    <li><a href="dataWarnet">Warnet</a></li>
-                </ul>
-                <ul>
-                    <li><a href="cv">Komputer</a></li>
-                </ul>
-                <ul>
-                    <li><a href="cv">Billing</a></li>
-                </ul>
+            <ul>
+                <li><a href="dataWarnet">Warnet</a></li>
+            </ul>
+            <ul>
+                <li><a href="cv">Komputer</a></li>
+            </ul>
+            <ul>
+                <li><a href="cv">Billing</a></li>
+            </ul>
 
             <div class="right-menu">
                 @auth
-                    <ul>
-                        <li class="nav-item nav-profile dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-                                Selamat Datang
-                                <!-- <img class="images" src="{{ asset('admin') }}/images/faces/OIP.jpg" alt="profile" /> -->
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                                <a class="dropdown-item" href="">
-                                    <i class="mdi mdi-account text-primary"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="mdi mdi-settings text-primary"></i>
-                                    Settings
-                                </a>
-                                <form action="/logout" method="post">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item"><i class="mdi mdi-logout text-danger"></i>
+                <ul>
+                    <li class="nav-item nav-profile dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
+                            Selamat Datang {{ Auth::user()->name_customer }}
+                            <!-- <img class="images" src="{{ asset('admin') }}/images/faces/OIP.jpg" alt="profile" /> -->
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+
+                            <form action="{{ route('logoutCustomer') }}" method="post">
+                                @csrf
+                                <button type="submit" class="dropdown-item"><i class="mdi mdi-logout text-danger"></i>
                                     Logout</button>
-                                </form>
-                            </div>
-                        </li>
-                    </ul>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
                 @else
-                    <ul>
-                        <li>
-                            <a class="dropdown-item" href="/login">
-                                <i class="mdi mdi-login text-primary"></i>
-                                login
-                            </a>
-                        </li>
-                    </ul>
-                @endauth 
+                <ul>
+                    <li>
+                        <a class="dropdown-item" href="/login">
+                            <i class="mdi mdi-login text-primary"></i>
+                            login
+                        </a>
+                    </li>
+                </ul>
+                @endauth
             </div>
 
         </div>

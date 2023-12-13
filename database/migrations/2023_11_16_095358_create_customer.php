@@ -18,10 +18,8 @@ return new class extends Migration
             $table->string('nama_customer');
             $table->string('username')->unique();
             $table->string('password');
-            $table->integer('billing');
-            $table->integer('no_telp');
+            $table->string('no_telp');
             $table->rememberToken();
-            $table->date('create_date');
             $table->timestamps();
         });
     }

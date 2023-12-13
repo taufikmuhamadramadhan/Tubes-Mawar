@@ -39,9 +39,7 @@
                     <tr>
                         <th>Nama</th>
                         <th>Username</th>
-                        <th>Billing</th>
                         <th>No. Telp</th>
-                        <th>Create Date</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -78,18 +76,12 @@
                     "data": "username",
                     "name": "username"
                 },
-                {
-                    "data": "billing",
-                    "name": "billing"
-                },
+
                 {
                     "data": "no_telp",
                     "name": "no_telp"
                 },
-                {
-                    "data": "create_date",
-                    "name": "create_date"
-                },
+
                 {
                     "data": "options",
                     "name": "options"
