@@ -130,3 +130,6 @@ Route::post('/warnet/data', [WarnetController::class, 'dataTable'])->name('warne
 Route::match(['get', 'post'], 'warnet/export-pdf', [WarnetController::class, 'exportPdf'])->name('warnet.exportPdf');
 
 
+Route::get('/billing', function () {
+    return view('billing.index');
+});

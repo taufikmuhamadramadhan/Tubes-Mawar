@@ -15,6 +15,7 @@ class CreateListKomputerTable extends Migration
             $table->string('processor');
             $table->string('ram');
             $table->string('gpu');
+            $table->double('harga'); // Added new column 'harga'
             $table->timestamps();
 
             $table->foreign('id_warnet')->references('id_warnet')->on('warnet');

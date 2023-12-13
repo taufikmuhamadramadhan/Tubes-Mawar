@@ -1,22 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Transaction History</title>
-</head>
-<body>
-    <h1>Transaction History</h1>
+@extends('layouts.base_admin.base_dashboard')
 
-    @foreach ($transactions as $transaction)
-        <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
-            <h2>Transaction ID: {{ $transaction->id }}</h2>
-            <p><strong>Warnet:</strong> {{ $transaction->warnet->name }}</p>
-            <p><strong>Computer:</strong> {{ $transaction->komputer->name }}</p>
-            <p><strong>Customer:</strong> {{ $transaction->customer->name }}</p>
-            <p><strong>Billing:</strong> {{ $transaction->billing }} minutes</p>
-            <p><strong>Expiration Date:</strong> {{ $transaction->exp_date }}</p>
-            <p><strong>Price:</strong> ${{ $transaction->harga }}</p>
-            <p><strong>Transaction Time:</strong> {{ $transaction->created_at }}</p>
-        </div>
-    @endforeach
-</body>
-</html>
+@section('content')
+    <div class="container">
+        <h1>Billing List</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Warnet</th>
+                    <th>Komputer</th>
+                    <th>Customer</th>
+                    <th>Billing</th>
+                    <th>Expiration Date</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($billings as $billing)
+                    <tr>
+                        <td>{{ $billing->id }}</td>
+                        <td>{{ $billing->warnet->name }}</td>
+                        <td>{{ $billing->komputer->name }}</td>
+                        <td>{{ $billing->customer->name }}</td>
+                        <td>{{ $billing->billing }}</td>
+                        <td>{{ $billing->exp_date }}</td>
+                        <td>{{ $billing->harga }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+@endsection
